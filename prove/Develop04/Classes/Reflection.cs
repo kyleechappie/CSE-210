@@ -9,14 +9,16 @@ namespace Develop04.Classes
             : base("Reflections Activity", "Reflect on your day and share your reflections with your family and friends.", duration)
         {
         }
-        public void RunGoals()
+        public void RunReflection()
         {
             Intro();
 
-        //add goal making activity here
+        //add reflection activity here
 
             // Ending message
             Ending();
         }
+
+      
     }
 }

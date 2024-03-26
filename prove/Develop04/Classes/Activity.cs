@@ -4,6 +4,8 @@ namespace Develop04.Classes
 {
     public class Activity
     {
+        private int userInputDuration;
+
         public string Name { get; set; }
         public string Description { get; set; }
         public int Duration { get; set; }
@@ -22,10 +24,13 @@ namespace Develop04.Classes
             Console.WriteLine("Set your preferred duration for this activity in seconds:");
 
             // Handle user input for duration
-            while (!int.TryParse(Console.ReadLine(), out userInputDuration) || userInputDuration <= 0)
-            {
-                Console.WriteLine("Invalid input. Please enter a positive integer for duration:");
-            }
+            // while (!int.TryParse(Console.ReadLine(), out userInputDuration) || userInputDuration <= 0)
+            // // userInputDuration wasnt working so i used out... hope i dont regret it
+            // {
+            //     Console.WriteLine("Invalid input. Please enter a positive integer for duration:");
+            // }
+
+            Duration = int.Parse(Console.ReadLine());
 
             Console.WriteLine($"Duration set to {Duration} seconds");
 
