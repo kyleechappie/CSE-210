@@ -1,42 +1,31 @@
 //Additional property: Speed.
 //Override methods: GetDistance(), GetSpeed(), GetPace().
 
-public class Bicycle : Activity
+using System;
+public class StationaryBicycles : Exercise
 {
-    // Additional property
-    private double speed;
+    private double _speed;
 
-    // Constructor
-    public Bicycle(DateTime date, int lengthInMinutes, double speed)
-        : base(date, lengthInMinutes)
+    public StationaryBicycles(string date, int minutes, double speed) : base(date, minutes)
     {
-        // Initialize additional property
-        this.speed = speed;
-
+        _name = "Stationary Bicycle";
+        _speed = speed;
     }
 
-    // Override methods
     public override double GetDistance()
     {
-        // Calculate distance
-        distance = lengthInMinutes * 0.03048 * speed / 60;
+        double distance = _speed * _minutes / 60;
+        return distance;
     }
 
     public override double GetSpeed()
     {
-        // Calculate speed
-        speed = lengthInMinutes * 0.03048 / (double)date.Subtract(DateTime.Now).TotalHours;
+        return _speed;
     }
 
     public override double GetPace()
     {
-        // Calculate pace
-        return 60.0 / (GetSpeed() / 3600.0);
-    }
-
-    // Method
-    public override string GetSummary()
-    {
-        // Generate summary
+        double pace = 60 / _speed;
+        return pace;
     }
 }

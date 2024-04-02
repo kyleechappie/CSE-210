@@ -1,25 +1,33 @@
 using System;
 
-class Program
+namespace DailyScripture
 {
-    static void Main()
+    class Program
     {
-        Scripture scripture = new Scripture("John 3:16", "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.");
-
-        do
+        
+        static void Main()
         {
+            Scripture scripture = new Scripture("3 Nephi ", 5, 13, "Behold, I am a disciple of Jesus Christ, the Son of God. I have been called of him to declare his word among his people, that they might have everlasting life. ");
             Console.Clear();
-            scripture.Display();
-
+            scripture.Display(); 
             Console.WriteLine("\nPress Enter to continue or type 'quit' to exit.");
-            string userInput = Console.ReadLine().ToLower();
 
-            if (userInput == "quit")
+            while (true)
             {
-                break;
-            }
+                string input = Console.ReadLine();
+                if (input.ToLower() == "quit")
+                    break;
 
-            scripture.HideRandomWords();
-        } while (!scripture.AllWordsHidden());
+                if (!scripture.HideRandomWord())
+                {
+                    Console.WriteLine("\nYou got this, you memorized the scripture!!!");
+                    break;
+                }
+
+                Console.Clear();
+                scripture.Display();
+                Console.WriteLine("\nPress Enter to continue or type 'quit' to exit.");
+            }
+        }
     }
 }

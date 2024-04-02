@@ -1,40 +1,35 @@
-//POLYMORPHISM PROJECT  
+using System;
 
-//Properties: Date, LengthInMinutes.
-//Virtual methods: GetDistance(), GetSpeed(), GetPace().
-//Method: GetSummary() to produce a summary string with all the information.
-
-public class Activity
+public class Exercise
 {
-    // Properties
-    private DateTime date;
-    private int lengthInMinutes;
+    protected string _date;
+    protected int _minutes;
+    protected string _name;
 
-    // Constructor
-    public Activity(DateTime date, int lengthInMinutes)
+    public Exercise(string date, int minutes)
     {
-        // Initialize properties
+        _date = date;
+        _minutes = minutes;
     }
 
-    // Virtual methods
     public virtual double GetDistance()
     {
-        // Calculate distance
+        return 0;
     }
 
     public virtual double GetSpeed()
     {
-        // Calculate speed
+        return 0;
     }
 
     public virtual double GetPace()
     {
-        // Calculate pace
+        return 0;
     }
 
-    // Method
-    public virtual string GetSummary()
+    public string GetSummary()
     {
-        // Generate summary
+        string summary = $"{_date} {_name} ({_minutes} min)- Distance {GetDistance()} km, Speed: {GetSpeed()} kph, Pace: {GetPace()} min per km";
+        return summary;
     }
 }

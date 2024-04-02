@@ -1,19 +1,46 @@
+using System;
+
 public class Lecture : Event
 {
-    // Additional properties
-    private string speaker;
-    private int capacity;
+    private string _speaker;
+    private int _capacity;
 
-    // Constructor
-    public Lecture(string title, string description, DateTime date, TimeSpan time, Address address, string speaker, int capacity)
-        : base(title, description, date, time, address)
+    public Lecture(string title, string description, string date, string time, Address address, string speaker, int capacity) : base(title, description, date, time, address)
     {
-        // Initialize additional properties
+        _speaker = speaker;
+        _capacity = capacity;
     }
 
-    // Override GenerateFullDetailsMessage() to include speaker name and capacity
-    public override string GenerateFullDetailsMessage()
+    public string GetSpeaker()
     {
-        // Generate full details message for a lecture
+        return _speaker;
     }
+    public int GetCapacity()
+    {
+        return _capacity;
+    }
+    public string ReturnEventType()
+    {
+        return "Lecture";
+    }
+
+    public string GenerateDetailedLecture()
+    {
+        string detailed = GenerateStandard() + "\n";
+
+        detailed += "Speaker: " + _speaker + "\n";
+        detailed += "Capacity: " + _capacity +  " max";
+        return detailed;
+    }
+
+    public string GenerateShortLecture()
+    {
+        string shortLecture = "";
+        string eventType = ReturnEventType();
+
+        shortLecture += "Event Type: " + eventType + "\n";
+        shortLecture += GenerateShort();
+        return shortLecture;
+    }
+    
 }

@@ -1,23 +1,36 @@
-public class Reference
+using System;
+
+namespace DailyScripture
 {
-    private int startVerse;
-    private int endVerse;
-
-    public Reference(int startVerse, int endVerse)
+        class Reference
     {
-        this.startVerse = startVerse;
-        this.endVerse = endVerse;
-    }
+        private string _book;
+        private int _chapter;
+        private int _startVerse;
+        private int _endVerse;
 
-    public override string ToString()
-    {
-        if (startVerse == endVerse)
+        public Reference(string book, int chapter, int verse)
         {
-            return $"{startVerse}";
+            this._book = book;
+            this._chapter = chapter;
+            this._startVerse = verse;
+            this._endVerse = verse;
         }
-        else
+
+        public Reference(string book, int chapter, int startVerse, int endVerse)
         {
-            return $"{startVerse}-{endVerse}";
+            this._book = book;
+            this._chapter = chapter;
+            this._startVerse = startVerse;
+            this._endVerse = endVerse;
+        }
+
+        public override string ToString()
+        {
+            if (_startVerse == _endVerse)
+                return $"{_book} {_chapter}:{_startVerse}";
+            else
+                return $"{_book} {_chapter}:{_startVerse}-{_endVerse}";
         }
     }
 }

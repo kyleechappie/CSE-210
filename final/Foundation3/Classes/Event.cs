@@ -4,34 +4,41 @@
     //GenerateFullDetailsMessage(): Returns a string with full details of the event.
     //GenerateShortDescriptionMessage(): Returns a string with a short description of the event type, title, and date.
 
+using System;
+
 public class Event
 {
-    // Properties
-    private string title;
-    private string description;
-    private DateTime date;
-    private TimeSpan time;
-    private Address address;
+    private string _title;
+    private string _description;
+    private string _date;
+    private string _time;
+    private Address _address;
 
-    // Constructor
-    public Event(string title, string description, DateTime date, TimeSpan time, Address address)
+    public Event(string title, string description, string date, string time, Address address)
     {
-        // Initialize properties
+        _title = title;
+        _description = description;
+        _date = date;
+        _time = time;
+        _address = address;
     }
 
-    // Methods to generate marketing messages
-    public string GenerateStandardDetailsMessage()
+    public string GenerateStandard()
     {
-        // Generate standard details message
+        string standard = "Title: " + _title + "\n";
+        standard += "Description: " + _description + "\n";
+        standard += _date + " | " + _time + "\n";
+
+        string address = _address.GenerateCompleteAddress();
+        standard += address;
+        return standard;
     }
 
-    public virtual string GenerateFullDetailsMessage()
+    public string GenerateShort()
     {
-        // Generate full details message
-    }
+        string shortM = "Name: " + _title + "\n";
 
-    public virtual string GenerateShortDescriptionMessage()
-    {
-        // Generate short description message
+        shortM += _date + "\n";
+        return shortM;
     }
 }

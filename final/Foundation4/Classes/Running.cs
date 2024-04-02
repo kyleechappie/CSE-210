@@ -1,41 +1,32 @@
 //Additional property: Distance.
 //Override methods: GetDistance(), GetSpeed(), GetPace().
 
-public class Running : Activity
-{
-    // Additional property
-    private double distance;
+using System;
 
-    // Constructor
-    public Running(DateTime date, int lengthInMinutes, double distance)
-        : base(date, lengthInMinutes)
+public class Running : Exercise
+{
+    private double _distance;
+
+    public Running(string date, int minutes, double distance) : base(date, minutes)
     {
-        // Initialize additional property
-        this.distance = distance;
+        _name = "Running";
+        _distance = distance;
     }
 
-    // Override methods
     public override double GetDistance()
     {
-        // Calculate distance
-        distance = lengthInMinutes * 0.62;
+        return _distance;
     }
 
     public override double GetSpeed()
     {
-        // Calculate speed
-        speed = lengthInMinutes * 0.62 / (double)date.Subtract(DateTime.Now).TotalHours;
+        double speed = (_distance / _minutes) * 60;
+        return speed;
     }
 
     public override double GetPace()
     {
-        // Calculate pace
-        return 60.0 / (GetSpeed() / 3600.0);
-    }
-
-    // Method
-    public override string GetSummary()
-    {
-        // Generate summary
+        double pace = _minutes / _distance;
+        return pace;
     }
 }

@@ -8,7 +8,7 @@ public class EternalGoal : Goal
         
     }
 
-    public EternalGoal(string name, string description, int pointValue,)
+    public EternalGoal(string name, string description, int pointValue) //whats the ish??
     {
         name = Name;
         description = Description;

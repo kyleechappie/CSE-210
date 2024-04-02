@@ -120,8 +120,6 @@ class Program
                         }
                         
                     }
-                    
-
                     // call LoadGoals method
                     // List<Goal> goals = new List<Goal>(); // Create a list to store the goals
                     // goalManager.LoadGoals(goals, "goals.txt");

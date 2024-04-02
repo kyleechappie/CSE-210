@@ -1,21 +1,31 @@
-public class Word
-{
-    private string content;
-    public bool IsHidden { get; private set; }
+using System;
 
-    public Word(string content)
+namespace DailyScripture
+{      
+    class Word
     {
-        this.content = content;
-        IsHidden = false;
-    }
+        private string _text;
+        private bool _isHidden;
 
-    public void Hide()
-    {
-        IsHidden = true;
-    }
+        public Word(string text)
+        {
+            this._text = text;
+            _isHidden = false;
+        }
 
-    public override string ToString()
-    {
-        return IsHidden ? "___" : content;
+        public void Hide()
+        {
+            _isHidden = true;
+        }
+
+        public string GetText()
+        {
+            return _text;
+        }
+
+        public bool IsHidden()
+        {
+            return _isHidden;
+        }
     }
 }

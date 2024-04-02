@@ -1,42 +1,33 @@
 //Additional property: Laps.
 //Override methods: GetDistance(), GetSpeed(), GetPace().
 
-public class Swimming : Activity
-{
-    // Additional property
-    private int laps;
+using System;
 
-    // Constructor
-    public Swimming(DateTime date, int lengthInMinutes, int laps)
-        : base(date, lengthInMinutes)
+public class Swimming : Exercise
+{
+    private double _laps;
+
+    public Swimming(string date, int minutes, int laps) : base(date, minutes)
     {
-        // Initialize additional property
-        this.laps = laps;
+        _name = "Swimming";
+        _laps = laps;
     }
 
-    // Override methods
     public override double GetDistance()
     {
-        // Calculate distance
-        distance = lengthInMinutes * 0.62;
+        double distance = _laps * 50 / 1000;
+        return distance;
     }
 
     public override double GetSpeed()
     {
-        // Calculate speed
-        speed = lengthInMinutes * 0.62 / (double)date.Subtract(DateTime.Now).TotalHours;
+        double speed = GetDistance() / _minutes * 60;
+        return speed;
     }
 
     public override double GetPace()
     {
-        // Calculate pace
-        return 60.0 / (GetSpeed() / 3600.0);
-    }
-
-    // Method
-    public override string GetSummary()
-    {
-        // Generate summary
-
+        double pace = _minutes / GetDistance();
+        return pace;
     }
 }
