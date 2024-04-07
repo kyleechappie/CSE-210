@@ -1,46 +1,20 @@
-using System;
+using System; 
 
-public class Lecture : Event
+public class Lectures : Event
 {
-    private string _speaker;
-    private int _capacity;
+    private string _speakerName {get; set;}    
+    private int _capacity {get; set;}    
 
-    public Lecture(string title, string description, string date, string time, Address address, string speaker, int capacity) : base(title, description, date, time, address)
+    public Lectures(string title, string description, string date, string time, string address, string type, string speakerName, int capacity) : base (title, description, date, time, address, type)
     {
-        _speaker = speaker;
+        _speakerName = speakerName;
         _capacity = capacity;
     }
 
-    public string GetSpeaker()
+    public void DisplayLectureFullDetails()
     {
-        return _speaker;
+        DisplayFullDetails();
+        Console.WriteLine($"Speaker: {_speakerName}");
+        Console.WriteLine($"Capacity: {_capacity}");
     }
-    public int GetCapacity()
-    {
-        return _capacity;
-    }
-    public string ReturnEventType()
-    {
-        return "Lecture";
-    }
-
-    public string GenerateDetailedLecture()
-    {
-        string detailed = GenerateStandard() + "\n";
-
-        detailed += "Speaker: " + _speaker + "\n";
-        detailed += "Capacity: " + _capacity +  " max";
-        return detailed;
-    }
-
-    public string GenerateShortLecture()
-    {
-        string shortLecture = "";
-        string eventType = ReturnEventType();
-
-        shortLecture += "Event Type: " + eventType + "\n";
-        shortLecture += GenerateShort();
-        return shortLecture;
-    }
-    
 }

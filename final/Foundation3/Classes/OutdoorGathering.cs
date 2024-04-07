@@ -1,43 +1,17 @@
-using System;
+using System; 
 
-public class OutdoorGathering : Event
-{
-    private string _weather;
-    public OutdoorGathering(string title, string description, string date, string time, Address address, string weather) : base(title, description, date, time, address)
+public class Outdoor : Event
+{   
+    private string _weather {get; set;}   
+
+    public Outdoor(string title, string description, string date, string time, string address, string type, string weather) : base (title, description, date, time, address, type)
     {
         _weather = weather;
     }
 
-    public string GetWeather()
+       public void DisplayOutdoorFullDetails()
     {
-        return _weather;
-    }
-
-    public string GenerateWeatherStatement()
-    {
-        return "The weather will be " + _weather + ".";
-    }
-
-    public string ReturnEventType()
-    {
-        return "Outdoor Gathering";
-    }
-    public string GenerateDetailedOutdoorGathering()
-    {
-        string detailed = "";
-        string weatherStatement = GenerateWeatherStatement();
-        
-        detailed += GenerateStandard() + "\n";
-        detailed += "Statement of the Weather: " + weatherStatement;
-        return detailed;
-    }
-    public string GenerateShortOutdoorGathering()
-    {
-        string shortOG = "";
-        string eventType = ReturnEventType();
-
-        shortOG += "Event Type: " + eventType + "\n";
-        shortOG += GenerateShort();
-        return shortOG;
+        DisplayFullDetails();
+        Console.WriteLine($"Weather: {_weather}");
     }
 }

@@ -1,19 +1,33 @@
-namespace ProductOrderingSystem
+using System;
+
+public class Customer
 {
-    public class Customer
+    private string _customerName {get; set;}
+    private Address _address {get; set;}
+
+    public Customer (string customerName, Address address)
     {
-        public string Name { get; set; }
-        public Address Address { get; set; }
+        _customerName = customerName;
+        _address = address;
+    }
 
-        public Customer(string name, Address address)
-        {
-            Name = name;
-            Address = address;
-        }
 
-        public bool IsInUSA()
+    public double GetShippingCost()
+    {
+        double shippingCost;
+        if (_address.GetCountry() == "USA")
         {
-            return Address.IsInUSA();
+            shippingCost = 5;
         }
+        else 
+        {
+            shippingCost = 35;
+        }
+        return shippingCost;
+    }
+
+    public void DisplayCustomer()
+    {
+        Console.WriteLine($"{_customerName}\r\n{_address.GetAddress()}");
     }
 }

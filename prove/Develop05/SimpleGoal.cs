@@ -7,22 +7,22 @@ public class SimpleGoal : Goal
     }
 
     public SimpleGoal(string name, string description, int pointValue, bool completion){
-        name = Name;
-        description = Description;
-        pointValue = PointValue;
-        completion = Completion;
+        _name = name;
+        _description = description;
+        _pointValue = pointValue;
+        _completion = completion;
     }
 
     public override void CompleteGoal(GoalManager goalManager)
     {
-        Completion = true;
-        goalManager.addToScore(PointValue);
+        _completion = true;
+        goalManager.addToScore(_pointValue);
     }
     // Method to display information about the simple goal
 
     public override string FormatGoal()
     {
-        return $"simple|{Name}|{Description}|{PointValue}|{Completion}";
+        return $"simple|{_name}|{_description}|{_pointValue}|{_completion}";
     }
 
 }

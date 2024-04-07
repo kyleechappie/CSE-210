@@ -1,29 +1,31 @@
-namespace ProductOrderingSystem
+using System;
+
+public class Address
 {
-    public class Address
+    private string _streetAddress {get; set;}
+    private string _city {get; set;}
+    private string _state {get; set;}
+    private string _country {get; set;}
+
+    public Address (string streetAddress, string city, string state, string country)
     {
-        private string streetAddress;
-        private string city;
-        private string stateOrProvince;
-        private string country;
+        _streetAddress = streetAddress;
+        _city = city;
+        _state = state;
+        _country = country;
+    }
 
-        public Address(string streetAddress, string city, string stateOrProvince, string country)
-        {
-            this.streetAddress = streetAddress;
-            this.city = city;
-            this.stateOrProvince = stateOrProvince;
-            this.country = country;
-        }
+    public void SetCountry(string country)
+    {
+        _country = country;
+    }
+    public string GetCountry()
+    {
+        return _country;
+    }
 
-        //costs less out of USA
-        public bool IsInUSA()
-        {
-            return country.ToLower() == "usa";
-        }
-
-        public override string ToString()
-        {
-            return $"Street Address: {streetAddress}\nCity: {city}\nState/Province: {stateOrProvince}\nCountry: {country}";
-        }
+    public string GetAddress() 
+    {
+        return $"{_streetAddress}\r\n{_city}, {_state}\r\n{_country}";
     }
 }

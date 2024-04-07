@@ -1,53 +1,48 @@
+//COMPLETE
+
 using System;
 
 class Program
 {
     static void Main(string[] args)
     {
-        Address address = new Address("123 Maple Dr", "Lima", "Lima", "USA");
+        Address address1 = new Address ("123 Oak Lane", "Pelican Town", "Stardew Valley", "12345", "Germany");
+        string lectureAddress = address1.GetAddress();
+        Lectures lecture = new Lectures("Town Council Meeting", "Meeting to discuss Community Center renovation", "Spring 13, 2001", "10:00 am - 11:00 pm", $"{lectureAddress}", "Lecture", "Mayor Lewis", 7);
 
-        Lecture lecture = new Lecture("How to pick up chicks", "A presentation on how to find your future babe: presented by none other than President Meredith", "March 29, 2024", "11 AM", address, "President Meredith", 450);
+        //display lecture event details
+        Console.WriteLine("---------------------------------------------------------------------------");
+        lecture.DisplayShortDescription();
         Console.WriteLine();
-
-        Console.WriteLine("Event Number: 1");
+        lecture.DisplayStandardDetails();
         Console.WriteLine();
-        Console.WriteLine(lecture.GenerateStandard());
+        lecture.DisplayLectureFullDetails();
 
+
+        Address address2 = new Address ("1304 Bristlewood Dr.", "McKinney", "TX", "75070", "USA");
+        string receptionAddress = address2.GetAddress();
+        Receptions reception = new Receptions("Annalee and Easton", "Annalee and Eastons wedding reception", "June 2, 2024", "6:00 pm - 12:00am", $"{receptionAddress}", "Reception", "wright@gmail.com");
+        //display reception event details
+        Console.WriteLine("---------------------------------------------------------------------------");
+        reception.DisplayShortDescription();
         Console.WriteLine();
-        Console.WriteLine(lecture.GenerateDetailedLecture());
-
+        reception.DisplayStandardDetails();
         Console.WriteLine();
-        Console.WriteLine(lecture.GenerateShortLecture());
+        reception.DisplayReceptionsFullDetails();
 
-        Address addressR = new Address("456 Oak Ln", "Los Olivos", "Lima", "Canada");
 
-        Reception reception = new Reception("Annalee and Eastons Wedding Reception", "Really cute wedding I so happy for them", "June 20, 2024", "12 PM", addressR, "wedding@gmail.com");
+        Address address3 = new Address ("5812 Heronrise Crecent Dr.", "Lithia", "FL", "33547", "USA");
+        string outdoorAddress = address3.GetAddress();
+        Outdoor outdoor = new Outdoor("Pool Party", "A pool party for some cool cats :)", "July 20, 2024", "12:00 pm", $"{outdoorAddress}", "Outdoor", "Sunny");
+        //display outdoor event details
+        Console.WriteLine("---------------------------------------------------------------------------");
+        
+        outdoor.DisplayShortDescription();
         Console.WriteLine();
-
-        Console.WriteLine("Event Number: 2");
+        outdoor.DisplayStandardDetails();
         Console.WriteLine();
-        Console.WriteLine(reception.GenerateStandard());
-
-        Console.WriteLine();
-        Console.WriteLine(reception.GenerateDetailedReception());
-
-        Console.WriteLine();
-        Console.WriteLine(reception.GenerateShortReception());
-
-        Address addressOG = new Address("789 Pine Xing", "Cusco", "Cusco", "USA");
-
-        OutdoorGathering outdoorGathering = new OutdoorGathering("Festival Inti Raymi", "The Celebration of the Sun", "September 16, 2023", "9 PM", addressOG, "sunny");
-        Console.WriteLine();
-
-        Console.WriteLine("Event Number: 3");
-
-        Console.WriteLine();
-        Console.WriteLine(outdoorGathering.GenerateStandard());
-
-        Console.WriteLine();
-        Console.WriteLine(outdoorGathering.GenerateDetailedOutdoorGathering());
-
-        Console.WriteLine();
-        Console.WriteLine(outdoorGathering.GenerateShortOutdoorGathering());
+        outdoor.DisplayOutdoorFullDetails();
+        Console.WriteLine("---------------------------------------------------------------------------");
+        
     }
 }

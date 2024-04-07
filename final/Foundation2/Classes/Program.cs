@@ -1,51 +1,63 @@
+//COMPLETE
+
 using System;
 
-namespace ProductOrderingSystem
+class Program
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            // addresses
-            Address address1 = new Address("123 Main St", "New York", "NY", "USA");
-            Address address2 = new Address("456 Oak St", "Los Angeles", "CA", "USA");
-            Address address3 = new Address("789 Elm St", "Toronto", "ON", "Canada");
+    static void Main(string[] args)
+    {   
+        Console.WriteLine("---------------------------------------------");
+        //order 1 
+        Address address1 = new Address ("221b Baker St.", "London", "London", "United Kingdom");
+        Customer customer1 = new Customer("Sherlock Holmes", address1);
 
-            // customers
-            Customer customer1 = new Customer("John Doe", address1);
-            Customer customer2 = new Customer("Jane Smith", address2);
-            Customer customer3 = new Customer("Alice Johnson", address3);
+        double order1ShippingCost = customer1.GetShippingCost();
 
-            // products
-            Product product1 = new Product("Product 1", "P001", 10.99m, 2);
-            Product product2 = new Product("Product 2", "P002", 7.99m, 3);
-            Product product3 = new Product("Product 3", "P003", 15.99m, 1);
+        Product order1Product1 = new Product("Black Tea", "1235", 7.25, 1);
+        Product order1Product2 = new Product("Pipe Tabacco", "4678", 3.29, 28);
 
-            // orders
-            Order order1 = new Order(customer1);
-            order1.AddProduct(product1);
-            order1.AddProduct(product2);
+        Order order1 = new Order(customer1);
+        order1.AddProduct(order1Product1);
+        order1.AddProduct(order1Product2);
+        double order1Subtotal = order1.CalculateSubtotal();
+        double order1Total = order1.CalculateTotal();
 
-            Order order2 = new Order(customer2);
-            order2.AddProduct(product2);
-            order2.AddProduct(product3);
+        //display order 1
+        order1.DisplayShippingLabel(); 
+        Console.WriteLine();
+        order1.DisplayPackingLabel();
+        Console.WriteLine();
+        order1.DisplayCosts(order1Subtotal ,order1ShippingCost, order1Total);
 
-            // packing labels/ shipping labels/ total price
-            Console.WriteLine("Order 1:");
-            Console.WriteLine("Packing Label:");
-            Console.WriteLine(order1.GetPackingLabel());
-            Console.WriteLine("Shipping Label:");
-            Console.WriteLine(order1.GetShippingLabel());
-            Console.WriteLine($"Total Price: ${order1.CalculateTotalCost()}");
 
-            Console.WriteLine();
+        Console.WriteLine("----------------------------------------------------");
 
-            Console.WriteLine("Order 2:");
-            Console.WriteLine("Packing Label:");
-            Console.WriteLine(order2.GetPackingLabel());
-            Console.WriteLine("Shipping Label:");
-            Console.WriteLine(order2.GetShippingLabel());
-            Console.WriteLine($"Total Price: ${order2.CalculateTotalCost()}");
-        }
-    }
+
+        //order 2
+        Address address2 = new Address ("2 Willow Lane", "Pelican Town", "Stardew Valley", "USA");
+        Customer customer2 = new Customer("Haley Caddel", address2);
+
+        double order2ShippingCost = customer2.GetShippingCost();
+
+        Product order2Product1 = new Product("Pink Skirt", "1234", 57.00, 1);
+        Product order2Product2 = new Product("Sunflower", "5678", 5.00, 7);
+        Product order2Product3 = new Product("Pink Cake Dry Mix", "4029", 2.99, 2);
+
+        Order order2 = new Order(customer2);
+        order2.AddProduct(order2Product1);
+        order2.AddProduct(order2Product2);
+        order2.AddProduct(order2Product3);
+        double order2Subtotal = order2.CalculateSubtotal();
+        double order2Total = order2.CalculateTotal();
+
+
+        //shipping/paking
+        order2.DisplayShippingLabel(); 
+        Console.WriteLine();
+        order2.DisplayPackingLabel();
+        Console.WriteLine();
+        order2.DisplayCosts(order2Subtotal, order2ShippingCost, order2Total);
+        Console.WriteLine("----------------------------------------------------");
+
+    }   
 }

@@ -1,44 +1,48 @@
-//Properties: Title, Description, Date, Time, Address.
-//Methods:
-    //GenerateStandardDetailsMessage(): Returns a string with standard details of the event.
-    //GenerateFullDetailsMessage(): Returns a string with full details of the event.
-    //GenerateShortDescriptionMessage(): Returns a string with a short description of the event type, title, and date.
-
-using System;
+using System; 
 
 public class Event
 {
-    private string _title;
-    private string _description;
-    private string _date;
-    private string _time;
-    private Address _address;
+    private string _title {get; set;}
+    private string _description {get; set;}
+    private string _date {get; set;}
+    private string _time {get; set;}
+    private string _address {get; set;}
+    private string _eventType {get; set;}
 
-    public Event(string title, string description, string date, string time, Address address)
+    public Event(string title, string description, string date, string time, string address, string type)
     {
         _title = title;
         _description = description;
-        _date = date;
-        _time = time;
-        _address = address;
+        _date = date; 
+        _time = time; 
+        _address = address; 
+        _eventType = type;
     }
 
-    public string GenerateStandard()
+    public void DisplayShortDescription()
     {
-        string standard = "Title: " + _title + "\n";
-        standard += "Description: " + _description + "\n";
-        standard += _date + " | " + _time + "\n";
-
-        string address = _address.GenerateCompleteAddress();
-        standard += address;
-        return standard;
+        Console.WriteLine($"Event Type: {_eventType}");
+        Console.WriteLine($"Name: {_title}");
+        Console.WriteLine($"Date: {_date}");
     }
 
-    public string GenerateShort()
+    public void DisplayStandardDetails() 
     {
-        string shortM = "Name: " + _title + "\n";
-
-        shortM += _date + "\n";
-        return shortM;
+        Console.WriteLine($"Name: {_title}");
+        Console.WriteLine($"Description: {_description}");
+        Console.WriteLine($"Date: {_date}");
+        Console.WriteLine($"Time: {_time}");
+        Console.WriteLine($"Address: {_address}");
     }
+
+    public void DisplayFullDetails()
+    {
+        Console.WriteLine($"Event Type: {_eventType}");
+        Console.WriteLine($"Name: {_title}");
+        Console.WriteLine($"Description: {_description}");
+        Console.WriteLine($"Date: {_date}");
+        Console.WriteLine($"Time: {_time}");
+        Console.WriteLine($"Address: {_address}");
+    }
+    
 }

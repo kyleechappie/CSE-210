@@ -1,33 +1,29 @@
+
 using System;
 
-namespace DailyScripture
+//To go beyond expectations I added the ability to randomly select from only those words that are not already hidden.
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        
-        static void Main()
+        Reference scriptureReference = new Reference("Proverbs", "3", "5-6");
+        Scripture scripture = new Scripture(scriptureReference, "Trust in the lord with all thine heart and understanding; in all thy ways acknowledge him, and he shall direct thy paths.");
+        ScriptureMemorizer scriptureMemorizer = new ScriptureMemorizer(scripture);
+
+        string userInput = "";
+
+        while (userInput != "quit" && scriptureMemorizer.hasWordsLeft() == true)
         {
-            Scripture scripture = new Scripture("3 Nephi ", 5, 13, "Behold, I am a disciple of Jesus Christ, the Son of God. I have been called of him to declare his word among his people, that they might have everlasting life. ");
             Console.Clear();
-            scripture.Display(); 
-            Console.WriteLine("\nPress Enter to continue or type 'quit' to exit.");
-
-            while (true)
-            {
-                string input = Console.ReadLine();
-                if (input.ToLower() == "quit")
-                    break;
-
-                if (!scripture.HideRandomWord())
-                {
-                    Console.WriteLine("\nYou got this, you memorized the scripture!!!");
-                    break;
-                }
-
-                Console.Clear();
-                scripture.Display();
-                Console.WriteLine("\nPress Enter to continue or type 'quit' to exit.");
-            }
+            Console.WriteLine(string.Format("{0} {1}", scriptureReference.toString(), scriptureMemorizer.toString()));
+            Console.WriteLine();
+            userInput = Console.ReadLine();
+            scriptureMemorizer.removeWordsFromText();
         }
+        //one more time outside of while loop since program ends with one word left
+        Console.Clear();
+        Console.WriteLine(string.Format("{0} {1}", scriptureReference.toString(), scriptureMemorizer.toString()));
+        Console.WriteLine();
+        Console.WriteLine("Good job!");
     }
 }

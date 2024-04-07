@@ -1,18 +1,18 @@
-public class Reception : Event
-{
-    // Additional property
-    private string rsvpEmail;
+using System; 
 
-    // Constructor
-    public Reception(string title, string description, DateTime date, TimeSpan time, Address address, string rsvpEmail)
-        : base(title, description, date, time, address)
+public class Receptions : Event
+{   
+    private string _email {get; set;}   
+
+    public Receptions(string title, string description, string date, string time, string address, string type, string email) : base (title, description, date, time, address, type)
     {
-        // Initialize additional property
+        _email = email;
     }
 
-    // Override GenerateFullDetailsMessage() to include RSVP email
-    public override string GenerateFullDetailsMessage()
-    {
-        // Generate full details message for a reception
+    public void DisplayReceptionsFullDetails()
+    {   
+        
+        DisplayFullDetails();
+        Console.WriteLine($"RSVP E-mail: {_email}");
     }
 }

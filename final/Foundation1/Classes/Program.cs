@@ -1,5 +1,7 @@
 // ARTICULATION PROJECT
 
+//
+
 //Once you have the classes in place, write a program that creates 3-4 videos, sets the appropriate values, and for each one add a list of 3-4 comments (with the commenter's name and text). 
 //Put each of these videos in a list.
 

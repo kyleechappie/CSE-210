@@ -1,23 +1,24 @@
-using System;
+using System; 
 
 public class Address
 {
-    private string _street;
-    private string _city;
-    private string _state;
-    private string _country;
+    private string _streetAddress {get; set;}
+    private string _city {get; set;}
+    private string _state {get; set;}
+    private string _postalCode {get; set;}
+    private string _country {get; set;}
 
-    public Address(string street, string city, string state, string country)
+    public Address (string streetAddress, string city, string state, string postalCode, string country)
     {
-        _street = street;
+        _streetAddress = streetAddress;
         _city = city;
         _state = state;
+        _postalCode = postalCode;
         _country = country;
     }
 
-    public string GenerateCompleteAddress()
+    public string GetAddress()
     {
-        string address = _street + ", " + _city + ", " + _state + ", " + _country;
-        return address;
+        return $"{_streetAddress}, {_city}, {_state} {_postalCode} {_country}";
     }
 }

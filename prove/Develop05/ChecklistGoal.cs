@@ -2,24 +2,24 @@ using System;
 
 public class ChecklistGoal : Goal
 {
-    protected int timesForBonus { get; set; }
+    protected int _timesForBonus { get; set; }
 
-    protected int bonusValue { get; set; }
+    protected int _bonusValue { get; set; }
 
-    protected int timesCompleted { get; set; }
+    protected int _timesCompleted { get; set; }
 
     public ChecklistGoal(){
 
     }
     
     public ChecklistGoal(string name, string description, int pointValue, bool completion, int timesForBonus, int bonusValue, int timesCompleted){
-        name = Name;
-        description = Description;
-        pointValue = PointValue;
-        completion = Completion;
-        timesForBonus = timesForBonus;
-        bonusValue = bonusValue;
-        timesCompleted = timesCompleted;
+        _name = name;
+        _description = description;
+        _pointValue = pointValue;
+        _completion = completion;
+        _timesForBonus = timesForBonus;
+        _bonusValue = bonusValue;
+        _timesCompleted = timesCompleted;
     }
     public override void DisplayGoalInformation()
     {
@@ -40,27 +40,27 @@ public class ChecklistGoal : Goal
     }
     public override string DisplayGoal()
     { 
-        if(Completion){
-            return $"[X] Name: {Name} - Description: {Description} - Points: {PointValue} - Status: {timesForBonus}/{timesCompleted} - Bonus value: {bonusValue}";
+        if(_completion){
+            return $"[X] Name: {_name} - Description: {_description} - Points: {_pointValue} - Status: {_timesForBonus}/{_timesCompleted} - Bonus value: {_bonusValue}";
         }
         else{
-            return $"[ ] Name: {Name} - Description: {Description} - Points: {PointValue} - Status: {timesForBonus}/{timesCompleted} - Bonus value: {bonusValue}";
+            return $"[ ] Name: {_name} - Description: {_description} - Points: {_pointValue} - Status: {_timesForBonus}/{_timesCompleted} - Bonus value: {_bonusValue}";
         }
         
     }
 
     public override void CompleteGoal(GoalManager goalManager)
     {
-        timesForBonus += 1;
-        if (timesForBonus == timesCompleted)
+        _timesForBonus += 1;
+        if (_timesForBonus == _timesCompleted)
         {
-            Completion = true;
-            goalManager.addToScore(bonusValue);
+            _completion = true;
+            goalManager.addToScore(_bonusValue);
         }
     
     }
     public override string FormatGoal()
     {
-        return $"checklist|{Name}|{Description}|{PointValue}|{Completion}|{timesForBonus}|{timesCompleted}|{bonusValue}";
+        return $"checklist|{_name}|{_description}|{_pointValue}|{_completion}|{_timesForBonus}|{_timesCompleted}|{_bonusValue}";
     }
 }
