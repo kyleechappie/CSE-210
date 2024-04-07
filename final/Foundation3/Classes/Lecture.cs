@@ -11,6 +11,7 @@ public class Lectures : Event
         _capacity = capacity;
     }
 
+    //add speaker and capacity
     public void DisplayLectureFullDetails()
     {
         DisplayFullDetails();

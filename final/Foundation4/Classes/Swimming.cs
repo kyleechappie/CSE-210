@@ -1,6 +1,9 @@
 //Additional property: Laps.
 //Override methods: GetDistance(), GetSpeed(), GetPace().
 
+
+//Distance (km) = swimming laps * 50 / 1000
+//Distance (miles) = swimming laps * 50 / 1000 * 0.62
 using System;
 
 public class Swimming : Exercise

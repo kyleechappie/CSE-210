@@ -9,6 +9,7 @@ public class Receptions : Event
         _email = email;
     }
 
+    //add rsvp
     public void DisplayReceptionsFullDetails()
     {   
         

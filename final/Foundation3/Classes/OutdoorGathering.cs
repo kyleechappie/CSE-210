@@ -9,6 +9,7 @@ public class Outdoor : Event
         _weather = weather;
     }
 
+//add weather 
        public void DisplayOutdoorFullDetails()
     {
         DisplayFullDetails();
